@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeesInfoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="countries">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="country_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="region_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="regions" Relationship="Self.FK__countries__regio__286302EC" FromRole="countries" ToRole="regions" />
+    <NavigationProperty Name="locations" Relationship="Self.FK__locations__count__2E1BDC42" FromRole="countries" ToRole="locations" />
+  </EntityType>
+  <EntityType Name="departments">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="department_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="location_id" Type="Int32" />
+    <NavigationProperty Name="locations" Relationship="Self.FK__departmen__locat__35BCFE0A" FromRole="departments" ToRole="locations" />
+    <NavigationProperty Name="employees" Relationship="Self.FK__employees__depar__3D5E1FD2" FromRole="departments" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="dependents">
+    <Key>
+      <PropertyRef Name="dependent_id" />
+    </Key>
+    <Property Name="dependent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employees" Relationship="Self.FK__dependent__emplo__412EB0B6" FromRole="dependents" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="hire_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="job_id" Type="Int32" Nullable="false" />
+    <Property Name="salary" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="manager_id" Type="Int32" />
+    <Property Name="department_id" Type="Int32" />
+    <NavigationProperty Name="departments" Relationship="Self.FK__employees__depar__3D5E1FD2" FromRole="employees" ToRole="departments" />
+    <NavigationProperty Name="dependents" Relationship="Self.FK__dependent__emplo__412EB0B6" FromRole="employees" ToRole="dependents" />
+    <NavigationProperty Name="jobs" Relationship="Self.FK__employees__job_i__3C69FB99" FromRole="employees" ToRole="jobs" />
+    <NavigationProperty Name="employees1" Relationship="Self.FK__employees__manag__3E52440B" FromRole="employees" ToRole="employees1" />
+    <NavigationProperty Name="employees2" Relationship="Self.FK__employees__manag__3E52440B" FromRole="employees1" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="jobs">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="job_title" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="min_salary" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="max_salary" Type="Decimal" Precision="8" Scale="2" />
+    <NavigationProperty Name="employees" Relationship="Self.FK__employees__job_i__3C69FB99" FromRole="jobs" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="locations">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="street_address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="postal_code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state_province" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="country_id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="countries" Relationship="Self.FK__locations__count__2E1BDC42" FromRole="locations" ToRole="countries" />
+    <NavigationProperty Name="departments" Relationship="Self.FK__departmen__locat__35BCFE0A" FromRole="locations" ToRole="departments" />
+  </EntityType>
+  <EntityType Name="regions">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="region_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="countries" Relationship="Self.FK__countries__regio__286302EC" FromRole="regions" ToRole="countries" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="log_department_ins_del">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="Int32" Nullable="false" />
+    <Property Name="department_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="location_id" Type="Int32" />
+    <Property Name="process_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="log_dependent_ins_del">
+    <Key>
+      <PropertyRef Name="dependent_id" />
+    </Key>
+    <Property Name="dependent_id" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="employee_id" Type="Int32" />
+    <Property Name="process_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="log_employee_ins_del">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="hire_date" Type="DateTime" Precision="0" />
+    <Property Name="job_id" Type="Int32" />
+    <Property Name="salary" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="manager_id" Type="Int32" />
+    <Property Name="department_id" Type="Int32" />
+    <Property Name="process_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="log_job_ins_del">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" />
+    <Property Name="job_title" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="min_salary" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="max_salary" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="process_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="log_location_ins_del">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="Int32" Nullable="false" />
+    <Property Name="street_address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="postal_code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="state_province" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="country_id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="process_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="log_region_ins_del">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="Int32" Nullable="false" />
+    <Property Name="region_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="process_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK__countries__regio__286302EC">
+    <End Role="regions" Type="Self.regions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="countries" Type="Self.countries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="countries">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locations__count__2E1BDC42">
+    <End Role="countries" Type="Self.countries" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="locations" Type="Self.locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="locations">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__departmen__locat__35BCFE0A">
+    <End Role="locations" Type="Self.locations" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="departments" Type="Self.departments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="locations">
+        <PropertyRef Name="location_id" />
+      </Principal>
+      <Dependent Role="departments">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__depar__3D5E1FD2">
+    <End Role="departments" Type="Self.departments" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="department_id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="department_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dependent__emplo__412EB0B6">
+    <End Role="employees" Type="Self.employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="dependents" Type="Self.dependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="dependents">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__job_i__3C69FB99">
+    <End Role="jobs" Type="Self.jobs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jobs">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="job_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__manag__3E52440B">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="employees1" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="employees1">
+        <PropertyRef Name="manager_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeesInfoEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="countries" EntityType="Self.countries" />
+    <EntitySet Name="departments" EntityType="Self.departments" />
+    <EntitySet Name="dependents" EntityType="Self.dependents" />
+    <EntitySet Name="employees" EntityType="Self.employees" />
+    <EntitySet Name="jobs" EntityType="Self.jobs" />
+    <EntitySet Name="locations" EntityType="Self.locations" />
+    <EntitySet Name="regions" EntityType="Self.regions" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="log_department_ins_del" EntityType="Self.log_department_ins_del" />
+    <EntitySet Name="log_dependent_ins_del" EntityType="Self.log_dependent_ins_del" />
+    <EntitySet Name="log_employee_ins_del" EntityType="Self.log_employee_ins_del" />
+    <EntitySet Name="log_job_ins_del" EntityType="Self.log_job_ins_del" />
+    <EntitySet Name="log_location_ins_del" EntityType="Self.log_location_ins_del" />
+    <EntitySet Name="log_region_ins_del" EntityType="Self.log_region_ins_del" />
+    <AssociationSet Name="FK__countries__regio__286302EC" Association="Self.FK__countries__regio__286302EC">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="countries" EntitySet="countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locations__count__2E1BDC42" Association="Self.FK__locations__count__2E1BDC42">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="locations" EntitySet="locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__departmen__locat__35BCFE0A" Association="Self.FK__departmen__locat__35BCFE0A">
+      <End Role="locations" EntitySet="locations" />
+      <End Role="departments" EntitySet="departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__depar__3D5E1FD2" Association="Self.FK__employees__depar__3D5E1FD2">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dependent__emplo__412EB0B6" Association="Self.FK__dependent__emplo__412EB0B6">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="dependents" EntitySet="dependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__job_i__3C69FB99" Association="Self.FK__employees__job_i__3C69FB99">
+      <End Role="jobs" EntitySet="jobs" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__manag__3E52440B" Association="Self.FK__employees__manag__3E52440B">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="employees1" EntitySet="employees" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EmployeesInfoModel1.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EmployeesInfoModel1.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="ListJobs" ReturnType="Collection(EmployeesInfoModel1.ListJobs_Result)" />
+    <EntitySet Name="admins" EntityType="EmployeesInfoModel1.admins" />
+    <FunctionImport Name="ListRegions" ReturnType="Collection(EmployeesInfoModel1.ListRegions_Result)" />
+    <FunctionImport Name="DeleteJob">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertJob">
+      <Parameter Name="job_title" Mode="In" Type="String" />
+      <Parameter Name="min_salary" Mode="In" Type="Decimal" />
+      <Parameter Name="max_salary" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="UdpateJob">
+      <Parameter Name="job_id" Mode="In" Type="Int32" />
+      <Parameter Name="job_title" Mode="In" Type="String" />
+      <Parameter Name="min_salary" Mode="In" Type="Decimal" />
+      <Parameter Name="max_salary" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateJob">
+      <Parameter Name="job_id" Mode="In" Type="Int32" />
+      <Parameter Name="job_title" Mode="In" Type="String" />
+      <Parameter Name="min_salary" Mode="In" Type="Decimal" />
+      <Parameter Name="max_salary" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRegion">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRegion">
+      <Parameter Name="region_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRegion">
+      <Parameter Name="region_id" Mode="In" Type="Int32" />
+      <Parameter Name="region_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteCountry">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCountry">
+      <Parameter Name="country_id" Mode="In" Type="String" />
+      <Parameter Name="country_name" Mode="In" Type="String" />
+      <Parameter Name="region_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ListCountries" ReturnType="Collection(EmployeesInfoModel1.ListCountries_Result)" />
+    <FunctionImport Name="UpdateCountry">
+      <Parameter Name="country_id" Mode="In" Type="String" />
+      <Parameter Name="country_name" Mode="In" Type="String" />
+      <Parameter Name="region_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteLocation">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertLocation">
+      <Parameter Name="street_address" Mode="In" Type="String" />
+      <Parameter Name="postal_code" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state_province" Mode="In" Type="String" />
+      <Parameter Name="country_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListLocations" ReturnType="Collection(EmployeesInfoModel1.ListLocations_Result)" />
+    <FunctionImport Name="UpdateLocation">
+      <Parameter Name="location_id" Mode="In" Type="Int32" />
+      <Parameter Name="street_address" Mode="In" Type="String" />
+      <Parameter Name="postal_code" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state_province" Mode="In" Type="String" />
+      <Parameter Name="country_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListDeraptments" ReturnType="Collection(EmployeesInfoModel1.ListDeraptments_Result)" />
+    <FunctionImport Name="ListDepartments" ReturnType="Collection(EmployeesInfoModel1.ListDepartments_Result)" />
+    <FunctionImport Name="DeleteDepartment">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertDepartment">
+      <Parameter Name="department_name" Mode="In" Type="String" />
+      <Parameter Name="location_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDepartment">
+      <Parameter Name="department_id" Mode="In" Type="Int32" />
+      <Parameter Name="department_name" Mode="In" Type="String" />
+      <Parameter Name="location_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ListJobs_Result">
+    <Property Type="Int32" Name="job_id" Nullable="false" />
+    <Property Type="String" Name="job_title" Nullable="false" MaxLength="35" />
+    <Property Type="Decimal" Name="min_salary" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="max_salary" Nullable="true" Precision="8" Scale="2" />
+  </ComplexType>
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="ListRegions_Result">
+    <Property Type="Int32" Name="region_id" Nullable="false" />
+    <Property Type="String" Name="region_name" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="ListCountries_Result">
+    <Property Type="String" Name="country_id" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="country_name" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="region_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ListLocations_Result">
+    <Property Type="String" Name="street_address" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="postal_code" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="city" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="state_province" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="country_name" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="ListDeraptments_Result">
+    <Property Type="Int32" Name="department_id" Nullable="false" />
+    <Property Type="String" Name="department_name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="city" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="country_name" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="ListDepartments_Result">
+    <Property Type="Int32" Name="department_id" Nullable="false" />
+    <Property Type="String" Name="department_name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="city" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="country_name" Nullable="true" MaxLength="40" />
+  </ComplexType>
+</Schema>

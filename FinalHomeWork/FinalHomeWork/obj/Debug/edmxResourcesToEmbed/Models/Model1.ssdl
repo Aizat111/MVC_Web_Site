@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeesInfoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="countries">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="country_name" Type="varchar" MaxLength="40" />
+    <Property Name="region_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="departments">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="department_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="location_id" Type="int" />
+  </EntityType>
+  <EntityType Name="dependents">
+    <Key>
+      <PropertyRef Name="dependent_id" />
+    </Key>
+    <Property Name="dependent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="relationship" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="employee_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="20" />
+    <Property Name="last_name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone_number" Type="varchar" MaxLength="20" />
+    <Property Name="hire_date" Type="date" Nullable="false" />
+    <Property Name="job_id" Type="int" Nullable="false" />
+    <Property Name="salary" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="manager_id" Type="int" />
+    <Property Name="department_id" Type="int" />
+  </EntityType>
+  <EntityType Name="jobs">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="job_title" Type="varchar" MaxLength="35" Nullable="false" />
+    <Property Name="min_salary" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="max_salary" Type="decimal" Precision="8" Scale="2" />
+  </EntityType>
+  <EntityType Name="locations">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="street_address" Type="varchar" MaxLength="40" />
+    <Property Name="postal_code" Type="varchar" MaxLength="12" />
+    <Property Name="city" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="state_province" Type="varchar" MaxLength="25" />
+    <Property Name="country_id" Type="char" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_department_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_department_ins_del">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="int" Nullable="false" />
+    <Property Name="department_name" Type="varchar" MaxLength="30" />
+    <Property Name="location_id" Type="int" />
+    <Property Name="process_type" Type="varchar" MaxLength="30" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_dependent_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_dependent_ins_del">
+    <Key>
+      <PropertyRef Name="dependent_id" />
+    </Key>
+    <Property Name="dependent_id" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="relationship" Type="varchar" MaxLength="25" />
+    <Property Name="employee_id" Type="int" />
+    <Property Name="process_type" Type="varchar" MaxLength="30" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_employee_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_employee_ins_del">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="20" />
+    <Property Name="last_name" Type="varchar" MaxLength="25" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="phone_number" Type="varchar" MaxLength="20" />
+    <Property Name="hire_date" Type="date" />
+    <Property Name="job_id" Type="int" />
+    <Property Name="salary" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="manager_id" Type="int" />
+    <Property Name="department_id" Type="int" />
+    <Property Name="process_type" Type="varchar" MaxLength="20" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_job_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_job_ins_del">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" Nullable="false" />
+    <Property Name="job_title" Type="varchar" MaxLength="35" />
+    <Property Name="min_salary" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="max_salary" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="process_type" Type="varchar" MaxLength="50" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_location_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_location_ins_del">
+    <Key>
+      <PropertyRef Name="location_id" />
+    </Key>
+    <Property Name="location_id" Type="int" Nullable="false" />
+    <Property Name="street_address" Type="varchar" MaxLength="40" />
+    <Property Name="postal_code" Type="varchar" MaxLength="12" />
+    <Property Name="city" Type="varchar" MaxLength="30" />
+    <Property Name="state_province" Type="varchar" MaxLength="25" />
+    <Property Name="country_id" Type="char" MaxLength="2" />
+    <Property Name="process_type" Type="varchar" MaxLength="20" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmployeesInfo.dbo.log_region_ins_del' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="log_region_ins_del">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="int" Nullable="false" />
+    <Property Name="region_name" Type="varchar" MaxLength="25" />
+    <Property Name="process_type" Type="varchar" MaxLength="50" />
+    <Property Name="process_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="regions">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region_name" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__countries__regio__286302EC">
+    <End Role="regions" Type="Self.regions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="countries" Type="Self.countries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regions">
+        <PropertyRef Name="region_id" />
+      </Principal>
+      <Dependent Role="countries">
+        <PropertyRef Name="region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__departmen__locat__35BCFE0A">
+    <End Role="locations" Type="Self.locations" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="departments" Type="Self.departments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="locations">
+        <PropertyRef Name="location_id" />
+      </Principal>
+      <Dependent Role="departments">
+        <PropertyRef Name="location_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__dependent__emplo__412EB0B6">
+    <End Role="employees" Type="Self.employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="dependents" Type="Self.dependents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="dependents">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__depar__3D5E1FD2">
+    <End Role="departments" Type="Self.departments" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="department_id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="department_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__job_i__3C69FB99">
+    <End Role="jobs" Type="Self.jobs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jobs">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="job_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__manag__3E52440B">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="employees1" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="employees1">
+        <PropertyRef Name="manager_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locations__count__2E1BDC42">
+    <End Role="countries" Type="Self.countries" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="locations" Type="Self.locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="countries">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="locations">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="DeleteDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InsertCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="country_id" Type="char" Mode="In" />
+    <Parameter Name="country_name" Type="varchar" Mode="In" />
+    <Parameter Name="region_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="department_name" Type="varchar" Mode="In" />
+    <Parameter Name="location_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="job_title" Type="varchar" Mode="In" />
+    <Parameter Name="min_salary" Type="decimal" Mode="In" />
+    <Parameter Name="max_salary" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="InsertLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="street_address" Type="varchar" Mode="In" />
+    <Parameter Name="postal_code" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state_province" Type="varchar" Mode="In" />
+    <Parameter Name="country_id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="InsertRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="region_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ListCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListDepartments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListDeraptments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListJobs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListRegions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="country_id" Type="char" Mode="In" />
+    <Parameter Name="country_name" Type="varchar" Mode="In" />
+    <Parameter Name="region_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateDepartment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="department_id" Type="int" Mode="In" />
+    <Parameter Name="department_name" Type="varchar" Mode="In" />
+    <Parameter Name="location_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="job_id" Type="int" Mode="In" />
+    <Parameter Name="job_title" Type="varchar" Mode="In" />
+    <Parameter Name="min_salary" Type="decimal" Mode="In" />
+    <Parameter Name="max_salary" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="UpdateLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="location_id" Type="int" Mode="In" />
+    <Parameter Name="street_address" Type="varchar" Mode="In" />
+    <Parameter Name="postal_code" Type="varchar" Mode="In" />
+    <Parameter Name="city" Type="varchar" Mode="In" />
+    <Parameter Name="state_province" Type="varchar" Mode="In" />
+    <Parameter Name="country_id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="UpdateRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="region_id" Type="int" Mode="In" />
+    <Parameter Name="region_name" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="EmployeesInfoModel1StoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dependents" EntityType="Self.dependents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="locations" EntityType="Self.locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="regions" EntityType="Self.regions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log_department_ins_del" EntityType="Self.log_department_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_department_ins_del].[department_id] AS [department_id], 
+    [log_department_ins_del].[department_name] AS [department_name], 
+    [log_department_ins_del].[location_id] AS [location_id], 
+    [log_department_ins_del].[process_type] AS [process_type], 
+    [log_department_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_department_ins_del] AS [log_department_ins_del]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="log_dependent_ins_del" EntityType="Self.log_dependent_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_dependent_ins_del].[dependent_id] AS [dependent_id], 
+    [log_dependent_ins_del].[first_name] AS [first_name], 
+    [log_dependent_ins_del].[last_name] AS [last_name], 
+    [log_dependent_ins_del].[relationship] AS [relationship], 
+    [log_dependent_ins_del].[employee_id] AS [employee_id], 
+    [log_dependent_ins_del].[process_type] AS [process_type], 
+    [log_dependent_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_dependent_ins_del] AS [log_dependent_ins_del]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="log_employee_ins_del" EntityType="Self.log_employee_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_employee_ins_del].[employee_id] AS [employee_id], 
+    [log_employee_ins_del].[first_name] AS [first_name], 
+    [log_employee_ins_del].[last_name] AS [last_name], 
+    [log_employee_ins_del].[email] AS [email], 
+    [log_employee_ins_del].[phone_number] AS [phone_number], 
+    [log_employee_ins_del].[hire_date] AS [hire_date], 
+    [log_employee_ins_del].[job_id] AS [job_id], 
+    [log_employee_ins_del].[salary] AS [salary], 
+    [log_employee_ins_del].[manager_id] AS [manager_id], 
+    [log_employee_ins_del].[department_id] AS [department_id], 
+    [log_employee_ins_del].[process_type] AS [process_type], 
+    [log_employee_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_employee_ins_del] AS [log_employee_ins_del]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="log_job_ins_del" EntityType="Self.log_job_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_job_ins_del].[job_id] AS [job_id], 
+    [log_job_ins_del].[job_title] AS [job_title], 
+    [log_job_ins_del].[min_salary] AS [min_salary], 
+    [log_job_ins_del].[max_salary] AS [max_salary], 
+    [log_job_ins_del].[process_type] AS [process_type], 
+    [log_job_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_job_ins_del] AS [log_job_ins_del]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="log_location_ins_del" EntityType="Self.log_location_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_location_ins_del].[location_id] AS [location_id], 
+    [log_location_ins_del].[street_address] AS [street_address], 
+    [log_location_ins_del].[postal_code] AS [postal_code], 
+    [log_location_ins_del].[city] AS [city], 
+    [log_location_ins_del].[state_province] AS [state_province], 
+    [log_location_ins_del].[country_id] AS [country_id], 
+    [log_location_ins_del].[process_type] AS [process_type], 
+    [log_location_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_location_ins_del] AS [log_location_ins_del]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="log_region_ins_del" EntityType="Self.log_region_ins_del" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [log_region_ins_del].[region_id] AS [region_id], 
+    [log_region_ins_del].[region_name] AS [region_name], 
+    [log_region_ins_del].[process_type] AS [process_type], 
+    [log_region_ins_del].[process_date] AS [process_date]
+    FROM [dbo].[log_region_ins_del] AS [log_region_ins_del]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__countries__regio__286302EC" Association="Self.FK__countries__regio__286302EC">
+      <End Role="regions" EntitySet="regions" />
+      <End Role="countries" EntitySet="countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__departmen__locat__35BCFE0A" Association="Self.FK__departmen__locat__35BCFE0A">
+      <End Role="locations" EntitySet="locations" />
+      <End Role="departments" EntitySet="departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__dependent__emplo__412EB0B6" Association="Self.FK__dependent__emplo__412EB0B6">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="dependents" EntitySet="dependents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__depar__3D5E1FD2" Association="Self.FK__employees__depar__3D5E1FD2">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__job_i__3C69FB99" Association="Self.FK__employees__job_i__3C69FB99">
+      <End Role="jobs" EntitySet="jobs" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__manag__3E52440B" Association="Self.FK__employees__manag__3E52440B">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="employees1" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locations__count__2E1BDC42" Association="Self.FK__locations__count__2E1BDC42">
+      <End Role="countries" EntitySet="countries" />
+      <End Role="locations" EntitySet="locations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

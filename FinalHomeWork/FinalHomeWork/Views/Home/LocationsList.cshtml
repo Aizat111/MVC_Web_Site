@@ -1,0 +1,61 @@
+﻿
+
+
+@model List<FinalHomeWork.ViewModels.HomeModels.LocationClass>
+@{
+    ViewBag.Title = "Locations List";
+}
+
+<h2>Locations List</h2>
+
+<div class="row" style="padding-bottom: 10px;">
+    <a href="/Home/CreateLocation" class="btn btn-success pull-right btn-sm">New Location</a>
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" style={back}>
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class=" text-center">Street Address</th>
+                    <th class="text-center">Postal Code</th>
+                    <th class="text-center">City</th>
+                    <th class="text-center">State Province</th>
+                    <th class="text-center">Country</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    int sayac = 0;
+                    foreach (var item in Model)
+                    {
+                        sayac++;
+                        <tr class="">
+                            <td class="text-center"><b>@sayac</b></td>
+                            <td class="text-center">@item.street_address</td>
+                            <td class="text-center">@item.postal_code</td>
+                            <td class="text-center">@item.city</td>
+                            <td class="text-center">@item.state_province</td>
+                            <td class="text-center">@item.country_name</td>
+                            <td class="text-center">
+                                @Html.ActionLink("Delete", "LocationDelete", new { id = item.location_id }, new { @class = "btn btn-danger", onclick = "return confirm('Do you really want to delete?')" })
+                                <a href="/Home/CreateLocation?id=@item.location_id" class="btn btn-primary btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">No Record</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

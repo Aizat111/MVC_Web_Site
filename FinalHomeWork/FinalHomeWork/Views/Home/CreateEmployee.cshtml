@@ -1,0 +1,134 @@
+﻿
+@model FinalHomeWork.ViewModels.HomeModels.EmployeeClass
+@{
+    ViewBag.Title = "EmployeeAdd";
+}
+
+
+<div class="row" style="padding: 30px 10px;">
+    <form action="/Home/CreateEmployee" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="employee_id" value="@Model.employee.employee_id" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" hidden class="form-control" name="first_name" id="firstName" value="@Model.employee.first_name" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" hidden class="form-control" name="last_name" id="lastName" value="@Model.employee.last_name" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" hidden class="form-control" name="email" id="email" value="@Model.employee.email" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" hidden class="form-control" name="phone_number" id="phone" value="@Model.employee.phone_number" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="hireDate">Hire Date</label>
+                <input type="datetime" hidden class="form-control" name="hire_date" id="hire_date" value="@Model.employee.hire_date" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="job">Job</label>
+                <select class="form-control" name="job_id" id="job" required>
+                    @if (Model.jobs.Count() > 0)
+                    {
+                        foreach (var item in Model.jobs)
+                        {
+                            if (Model.employee.job_id == item.job_id)
+                            {
+                                <option value="@item.job_id" selected>@item.job_title</option>
+                            }
+                            else
+                            {
+                                <option value="@item.job_id">@item.job_title</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="text" hidden class="form-control" name="salary" id="salary" value="@Model.employee.salary" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="manager">Manager</label>
+                <select class="form-control" name="manager_id" id="manager" required>
+                    @if (Model.employees.Count() > 0)
+                    {
+                        <option value=null> NULL</option>
+                        foreach (var item in Model.employees)
+                        {
+                            if (Model.employee.manager_id == item.employee_id)
+                            {
+                                <option value="@item.employee_id" selected>@item.first_name - @item.last_name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.employee_id">@item.first_name - @item.last_name</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control" name="department_id" id="department" required>
+                    @if (Model.departments.Count() > 0)
+                    {
+                       
+                        foreach (var item in Model.departments)
+                        {
+                            if (Model.employee.department_id == item.department_id)
+                            {
+                                <option value="@item.department_id" selected>@item.department_name</option>
+                            }
+                            else
+                            {
+                                
+                                <option value="@item.department_id">@item.department_name</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success pull-left">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+

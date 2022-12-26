@@ -1,0 +1,55 @@
+﻿@model List<FinalHomeWork.Models.jobs>
+@{
+    ViewBag.Title = "Jobs List";
+}
+
+<h2>Jobs List</h2>
+
+<div class="row" style="padding-bottom: 10px;">
+    <a href="/Home/CreateJob" class="btn btn-success pull-right btn-sm">New Job</a>
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" style={back}>
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Job Title</th>
+                    <th class="text-center">Min Salary</th>
+                    <th class="text-center">Max Salary</th>
+
+                </tr>
+            </thead>
+           
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    int sayac = 0;
+                    foreach (var item in Model)
+                    {
+                        sayac++;
+                        <tr class="">
+                            <td class="text-center"><b>@sayac</b></td>
+                            <td class="text-center">@item.job_title</td>
+                            <td class="text-center">@item.min_salary</td>
+                            <td class="text-center">@item.max_salary</td>
+                         
+                            <td class="text-center">
+                                @Html.ActionLink("Delete", "JobDelete", new { id = item.job_id }, new { @class = "btn btn-danger", onclick = "return confirm('Do you really want to delete?')" })
+                                <a href="/Home/CreateJob?id=@item.job_id" class="btn btn-primary btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">No Record</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

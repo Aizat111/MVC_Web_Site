@@ -1,0 +1,22 @@
+﻿@model FinalHomeWork.Models.regions
+@{
+    ViewBag.Title = "RegionAdd";
+}
+
+
+<div class="row" style="padding: 30px 10px;">
+    <form action="/Home/CreateRegion" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="region_id" value="@Model.region_id" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="region_Name">Region Name</label>
+                <input type="text" class="form-control" name="region_name" id="regionName" value="@Model.region_name" />
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success pull-left">Save</button>
+        </div>
+    </form>
+</div>
+

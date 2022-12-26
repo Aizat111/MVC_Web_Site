@@ -1,0 +1,50 @@
+﻿
+@model FinalHomeWork.ViewModels.HomeModels.DepartmentClass
+@{
+    ViewBag.Title = "DepartmentAdd";
+}
+
+
+<div class="row" style="padding: 30px 10px;">
+    <form action="/Home/CreateDepartment" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="department_id" value="@Model.department.department_id" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="departmentName">Department Name</label>
+                <input type="text" hidden class="form-control" name="department_name" id="departmentName" value="@Model.department.department_name" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select class="form-control" name="location_id" id="location" required>
+                    @if (Model.locations.Count() > 0)
+                    {
+                        foreach (var item in Model.locations)
+                        {
+                            if (Model.department.location_id == item.location_id)
+                            {
+                                <option value="@item.location_id" selected>@item.street_address-@item.state_province-@item.city-@item.postal_code</option>
+                            }
+                            else
+                            {
+                                <option value="@item.location_id">@item.street_address-@item.state_province-@item.city-@item.postal_code</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success pull-left">Save</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+

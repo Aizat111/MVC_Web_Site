@@ -1,0 +1,47 @@
+﻿
+@model FinalHomeWork.ViewModels.HomeModels.CountryClass
+@{
+    ViewBag.Title = "CountryAdd";
+}
+
+
+<div class="row" style="padding: 30px 10px;">
+    <form action="/Home/CreateCountry?id=''" method="post" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="countryId">Country Id</label>
+                <input type="text" class="form-control" name="country_id" id="countryId"  />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="countryName">Country Name</label>
+                <input type="text" class="form-control" name="country_name" id="countryName"  />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="regionId">Region</label>
+                <select class="form-control" name="region_id" id="regionId" required>
+                    @if (Model.regions.Count() > 0)
+                    {
+                        foreach (var item in Model.regions)
+                        {
+                            
+                                <option value="@item.region_id">@item.region_name</option>
+                            
+
+                        }
+                    }
+                </select>
+            </div>
+            </div>
+
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-success pull-left">Save</button>
+            </div>
+    </form>
+</div>
+
+
+

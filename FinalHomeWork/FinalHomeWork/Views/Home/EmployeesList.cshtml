@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+
+@model List<FinalHomeWork.ViewModels.HomeModels.EmployeeClass>
+@{
+    ViewBag.Title = "Employees List";
+}
+
+<h2>Employees List</h2>
+
+<div class="row" style="padding-bottom: 10px;">
+    <a href="/Home/CreateEmployee" class="btn btn-success pull-right btn-sm">New Employee</a>
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" style={back}>
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class=" text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Phone Number</th>
+                    <th class="text-center">Hire Date</th>
+                    <th class="text-center">Job</th>
+                    <th class="text-center">Salary</th>
+                    <th class="text-center">Department</th>
+                    <th class="text-center">Manager</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    int sayac = 0;
+                    foreach (var item in Model)
+                    {
+                        sayac++;
+                        <tr class="">
+                            <td class="text-center"><b>@sayac</b></td>
+                            <td class="text-center">@item.first_name</td>
+                            <td class="text-center">@item.last_name</td>
+                            <td class="text-center">@item.email</td>
+                            <td class="text-center">@item.phone_number</td>
+                            <td class="text-center">@item.hire_date</td>
+                            <td class="text-center">@item.job_title</td>
+                            <td class="text-center">@item.salary</td>
+                            <td class="text-center">@item.department_name</td>
+                            <td class="text-center">@item.manager</td>
+
+                            <td class="text-center">
+                                @Html.ActionLink("Delete", "EmployeeDelete", new { id = item.employee_id }, new { @class = "btn btn-danger", onclick = "return confirm('Do you really want to delete?')" })
+                                <a href="/Home/CreateEmployee?id=@item.employee_id" class="btn btn-primary btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">No Record</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

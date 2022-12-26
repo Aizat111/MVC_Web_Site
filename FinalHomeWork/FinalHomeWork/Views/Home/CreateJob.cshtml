@@ -1,0 +1,30 @@
+﻿@model FinalHomeWork.Models.jobs
+@{
+    ViewBag.Title = "JobAdd";
+}
+
+
+<div class="row" style="padding: 30px 10px;">
+    <form action="/Home/CreateJob" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="job_id" value="@Model.job_id" />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" class="form-control" name="job_title" id="jobTitle" value="@Model.job_title" />
+            </div>
+            <div class="form-group">
+                <label for="minSalary">Min Salary</label>
+                <input type="text" class="form-control" name="min_salary" id="minSalary" value="@Model.min_salary" />
+            </div>
+            <div class="form-group">
+                <label for="maxSalary">Max Salary</label>
+                <input type="text" class="form-control" name="max_salary" id="maxSalary" value="@Model.max_salary" />
+            </div>
+        </div>
+      
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-success pull-left">Save</button>
+        </div>
+    </form>
+</div>
+

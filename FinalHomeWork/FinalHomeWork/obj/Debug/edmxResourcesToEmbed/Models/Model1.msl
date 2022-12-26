@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeesInfoModel1StoreContainer" CdmEntityContainer="EmployeesInfoEntities1">
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.countries">
+        <MappingFragment StoreEntitySet="countries">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.departments">
+        <MappingFragment StoreEntitySet="departments">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dependents">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.dependents">
+        <MappingFragment StoreEntitySet="dependents">
+          <ScalarProperty Name="dependent_id" ColumnName="dependent_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="relationship" ColumnName="relationship" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.employees">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.jobs">
+        <MappingFragment StoreEntitySet="jobs">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="min_salary" ColumnName="min_salary" />
+          <ScalarProperty Name="max_salary" ColumnName="max_salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locations">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.locations">
+        <MappingFragment StoreEntitySet="locations">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="street_address" ColumnName="street_address" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state_province" ColumnName="state_province" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regions">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.regions">
+        <MappingFragment StoreEntitySet="regions">
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_department_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_department_ins_del">
+        <MappingFragment StoreEntitySet="log_department_ins_del">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_dependent_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_dependent_ins_del">
+        <MappingFragment StoreEntitySet="log_dependent_ins_del">
+          <ScalarProperty Name="dependent_id" ColumnName="dependent_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="relationship" ColumnName="relationship" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_employee_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_employee_ins_del">
+        <MappingFragment StoreEntitySet="log_employee_ins_del">
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_job_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_job_ins_del">
+        <MappingFragment StoreEntitySet="log_job_ins_del">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="min_salary" ColumnName="min_salary" />
+          <ScalarProperty Name="max_salary" ColumnName="max_salary" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_location_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_location_ins_del">
+        <MappingFragment StoreEntitySet="log_location_ins_del">
+          <ScalarProperty Name="location_id" ColumnName="location_id" />
+          <ScalarProperty Name="street_address" ColumnName="street_address" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state_province" ColumnName="state_province" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_region_ins_del">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.log_region_ins_del">
+        <MappingFragment StoreEntitySet="log_region_ins_del">
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+          <ScalarProperty Name="process_type" ColumnName="process_type" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EmployeesInfoModel1.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EmployeesInfoModel1.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EmployeesInfoModel1.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EmployeesInfoModel1.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EmployeesInfoModel1.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EmployeesInfoModel1.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EmployeesInfoModel1.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="ListJobs" FunctionName="EmployeesInfoModel1.Store.ListJobs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListJobs_Result">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="min_salary" ColumnName="min_salary" />
+          <ScalarProperty Name="max_salary" ColumnName="max_salary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="EmployeesInfoModel1.admins">
+        <MappingFragment StoreEntitySet="admins">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ListRegions" FunctionName="EmployeesInfoModel1.Store.ListRegions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListRegions_Result">
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteJob" FunctionName="EmployeesInfoModel1.Store.DeleteJob" />
+    <FunctionImportMapping FunctionImportName="InsertJob" FunctionName="EmployeesInfoModel1.Store.InsertJob" />
+    <FunctionImportMapping FunctionImportName="UpdateJob" FunctionName="EmployeesInfoModel1.Store.UpdateJob" />
+    <FunctionImportMapping FunctionImportName="DeleteRegion" FunctionName="EmployeesInfoModel1.Store.DeleteRegion" />
+    <FunctionImportMapping FunctionImportName="InsertRegion" FunctionName="EmployeesInfoModel1.Store.InsertRegion" />
+    <FunctionImportMapping FunctionImportName="UpdateRegion" FunctionName="EmployeesInfoModel1.Store.UpdateRegion" />
+    <FunctionImportMapping FunctionImportName="DeleteCountry" FunctionName="EmployeesInfoModel1.Store.DeleteCountry" />
+    <FunctionImportMapping FunctionImportName="InsertCountry" FunctionName="EmployeesInfoModel1.Store.InsertCountry" />
+    <FunctionImportMapping FunctionImportName="ListCountries" FunctionName="EmployeesInfoModel1.Store.ListCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListCountries_Result">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateCountry" FunctionName="EmployeesInfoModel1.Store.UpdateCountry" />
+    <FunctionImportMapping FunctionImportName="DeleteLocation" FunctionName="EmployeesInfoModel1.Store.DeleteLocation" />
+    <FunctionImportMapping FunctionImportName="InsertLocation" FunctionName="EmployeesInfoModel1.Store.InsertLocation" />
+    <FunctionImportMapping FunctionImportName="ListLocations" FunctionName="EmployeesInfoModel1.Store.ListLocations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListLocations_Result">
+          <ScalarProperty Name="street_address" ColumnName="street_address" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state_province" ColumnName="state_province" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateLocation" FunctionName="EmployeesInfoModel1.Store.UpdateLocation" />
+    <FunctionImportMapping FunctionImportName="ListDeraptments" FunctionName="EmployeesInfoModel1.Store.ListDeraptments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListDeraptments_Result">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListDepartments" FunctionName="EmployeesInfoModel1.Store.ListDepartments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeesInfoModel1.ListDepartments_Result">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteDepartment" FunctionName="EmployeesInfoModel1.Store.DeleteDepartment" />
+    <FunctionImportMapping FunctionImportName="InsertDepartment" FunctionName="EmployeesInfoModel1.Store.InsertDepartment" />
+    <FunctionImportMapping FunctionImportName="UpdateDepartment" FunctionName="EmployeesInfoModel1.Store.UpdateDepartment" />
+  </EntityContainerMapping>
+</Mapping>

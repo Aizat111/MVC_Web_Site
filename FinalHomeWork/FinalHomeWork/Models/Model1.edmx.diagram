@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ed6bf04a94c4016bb60245f925bd630" Name="Diagram1">
+        <EntityTypeShape EntityType="EmployeesInfoModel1.countries" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.departments" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.dependents" Width="1.5" PointX="12" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.employees" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.jobs" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.locations" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.regions" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_department_ins_del" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_dependent_ins_del" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_employee_ins_del" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_job_ins_del" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_location_ins_del" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_region_ins_del" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__countries__regio__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__locations__count__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__departmen__locat__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__employees__depar__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__dependent__emplo__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__employees__job_i__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesInfoModel1.FK__employees__manag__3E52440B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.admins" Width="1.5" PointX="10.375" PointY="5.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_country_upd" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_department_upd" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_employee_upd" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_job_upd" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_location_upd" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="EmployeesInfoModel1.log_region_upd" Width="1.5" PointX="12.75" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
